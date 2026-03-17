@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kapum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #000000;
+      --text: #ff9700;
+      --muted: rgba(255, 151, 0, 0.72);
+      --line: rgba(255, 151, 0, 0.18);
+      --card: rgba(255, 151, 0, 0.03);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      text-transform: lowercase;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Geist", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.15;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1, h2, h3, .brand, .button {
+      font-weight: 700;
+    }
+
+    p, a, span, li {
+      font-weight: 400;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(16px);
+      background: rgba(0, 0, 0, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+}
+
+.nav {
+margin-left: auto;
+display: flex;
+gap: 24px;
+}
+
+    .brand img {
+        height: 20px;
+        width: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .nav a,
+    .ghost-link {
+      font-size: 0.9rem;
+      color: var(--muted);
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .nav a:hover,
+    .ghost-link:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      padding: 60px 0 40px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      font-size: 0.85rem;
+      line-height: 1.4;
+      letter-spacing: 0.04em;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 28px;
+      align-items: end;
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 9vw, 8rem);
+      letter-spacing: -0.07em;
+      line-height: 0.92;
+      max-width: 10ch;
+    }
+
+    .hero-right {
+      display: grid;
+      gap: 18px;
+      justify-items: start;
+      padding-bottom: 10px;
+    }
+
+    .lead-tag {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .lead {
+      font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+      line-height: 1.35;
+      color: var(--text);
+      max-width: 28ch;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border: 1px solid var(--text);
+      border-radius: 999px;
+      font-size: 0.92rem;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+
+    .button:hover {
+      background: var(--text);
+      color: var(--bg);
+      transform: translateY(-1px);
+    }
+
+    .section {
+      padding: 28px 0 38px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .label {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .section-title {
+      font-size: clamp(1.2rem, 3vw, 1.9rem);
+      letter-spacing: -0.04em;
+      max-width: 18ch;
+    }
+
+   .projects {
+  display: block;
+}
+
+.project {
+  width: 100%;
+}
+
+.project-media img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+    .project {
+      display: grid;
+      grid-template-rows: auto auto;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      min-height: 280px;
+    }
+
+    .project:hover img{
+transform:scale(1.03);
+}
+
+.project-media img{
+transition:transform .35s ease;
+}
+
+    .project-media {
+      aspect-ratio: 4 / 3;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .project-meta {
+      padding: 16px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .project-title {
+      font-size: 1.1rem;
+      letter-spacing: -0.03em;
+    }
+
+    .project-copy {
+      font-size: 0.95rem;
+      line-height: 1.45;
+      color: var(--muted);
+    }
+
+    .about-grid,
+    .contact-grid,
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .big-copy {
+      font-size: clamp(1.4rem, 3vw, 2.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.05em;
+      max-width: 16ch;
+    }
+
+    .text-block {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .text-block p,
+    .contact-list a,
+    .footer-note,
+    .helper {
+      font-size: 1rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-list a {
+      width: fit-content;
+      color: var(--text);
+      border-bottom: 1px solid transparent;
+    }
+
+    .contact-list a:hover {
+      border-bottom-color: var(--text);
+    }
+
+    .placeholder {
+      border: 1px dashed rgba(255, 151, 0, 0.35);
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(255, 151, 0, 0.02);
+    }
+
+    .placeholder code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      color: var(--text);
+      text-transform: none;
+    }
+
+    footer {
+      padding: 24px 0 40px;
+    }
+
+    .footer-grid {
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+  .hero-grid,
+  .about-grid,
+  .contact-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-head {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .topbar-inner {
+    min-height: 64px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+}
+
+    @media (max-width: 640px) {
+  .page,
+  .topbar-inner {
+    width: min(calc(100% - 24px), var(--max));
+  }
+
+  .hero {
+    padding-top: 28px;
+  }
+
+  .brand img {
+    height: 16px;
+    width: auto;
+  }
+
+  .project {
+    border-radius: 18px;
+    min-height: auto;
+  }
+
+  .project-media {
+    aspect-ratio: auto;
+    padding: 0;
+  }
+
+  .project-media img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+<img src="images/logo.svg" alt="kapum">
+</a>
+      <nav class="nav">
+        <a href="#projects">events</a>
+        <a href="#about">about</a>
+  <a href="#" id="copyEmail">contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="page">
+    <section class="hero">
+      <div class="eyebrow">.available for projects</div>
+      <div class="hero-grid">
+        <h1>culture at work.</h1>
+        <div class="hero-right">
+          <div class="lead-tag">.our idea</div>
+          <p class="lead">visual. culture. sustainability</p>
+          <a class="button" href="#contact">need sum?</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-head">
+        <div class="label">.events</div>
+        <h2 class="section-title">culture is practice.</h2>
+      </div>
+<div class="projects">
+
+<a href="https://ntry.at/ihatemyselfbecausevienna/performances/26667?l=en" class="project-link" target="_blank">
+
+<article class="project">
+
+<div class="project-media">
+<img src="images/poster_a3.png" alt="poster">
+</div>
+
+<div class="project-meta">
+<h3 class="project-title">live campaigns</h3>
+<p class="project-copy">i hate myself because live in vienna 
+// design: Fabian Lesslhumer, foto: Nick Limberger </p>
+</div>
+
+</article>
+
+</a>
+
+</div>
+
+    </section>
+
+    <section id="about" class="section">
+      <div class="about-grid">
+        <div>
+          <div class="label">.about</div>
+          <p class="big-copy">what we do</p>
+        </div>
+        <div class="text-block">
+          <p>we create visual storytelling, cultural formats and strategic communication for artists, regional makers and social initiatives</p>
+          <p>from image films and visual identity to event concepts, documentation and digital presence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="contact-grid">
+        <div>
+          <div class="label">.contact</div>
+          <p class="big-copy"> Get in touch if you have a project in mind or want to collaborate with us.</p>
+        </div>
+        <div class="text-block">
+          <p>tell us what you want to do</p>
+          <div class="contact-list">
+            <a href="mailto:hello@kapum.agency">hello@kapum.agency</a>
+            <a href="https://www.instagram.com/kapum.agency/?utm_source=ig_web_button_share_sheet" target="_blank" rel="noreferrer">instagram</a>
+            <a href="https://ntry.at/shop/kapumagency" target="_blank" rel="noreferrer">events & tickets</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+    <div class="footer-grid">
+
+<a href="/" class="footer-note">
+kapum.agency - visual. culture. sustainability.
+</a>
+
+<div class="footer-links">
+  <a class="ghost-link" href="imprint.html">imprint</a>
+  <a class="ghost-link" href="privacy.html">privacy</a>
+  <a class="ghost-link" href="https://www.instagram.com/kapum.agency/?utm_source=ig_web_button_share_sheet">instagram</a>
+</div>
+
+</div>
+      </div>
+    </footer>
+  </main>
+<script>
+
+const email = "hello@kapum.agency";
+const link = document.getElementById("copyEmail");
+
+link.addEventListener("click", function(e) {
+  e.preventDefault();
+
+  navigator.clipboard.writeText(email);
+
+  const original = link.textContent;
+
+  link.textContent = "email copied";
+
+  setTimeout(() => {
+    link.textContent = original;
+  }, 2000);
+
+});
+
+</script>
+</body>
+</html>
