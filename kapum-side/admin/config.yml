@@ -1,1 +1,18 @@
+backend:
+  name: github
+  repo: maierlfelix-star/kapum-agency
+  branch: main
 
+media_folder: "kapum-side/images"
+public_folder: "/images"
+
+collections:
+  - name: "projects"
+    label: "Projects"
+    folder: "kapum-side/content/projects"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Beschreibung", name: "description", widget: "text" }
+      - { label: "Bild", name: "image", widget: "image" }
