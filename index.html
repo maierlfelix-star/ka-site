@@ -523,31 +523,50 @@ transition:transform .35s ease;
 }
 
 @media (max-width: 768px) {
-
-  /* Poster kleiner */
-  .event-poster img {
-    max-height: 50vh;   /* vorher zu groß */
-    width: auto;
-    margin: 0 auto;
-  }
-
-  /* Layout bleibt untereinander */
+  
   .event-hero {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
 
-  /* Text enger */
+  .event-poster {
+    width: 100%;
+  }
+
+  .event-poster img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    max-height: 62vh;
+    object-fit: contain;
+    margin: 0;
+  }
+
   .event-bigtext {
-    gap: 0.05em; /* enger */
+    align-items: flex-start;
+    text-align: left;
+    gap: 0.02em;
+    width: 100%;
   }
 
   .event-bigtext span {
-    font-size: 14vw;     /* skalierend */
-    line-height: 0.8;    /* enger */
-    letter-spacing: -0.04em;
+    font-size: clamp(3.4rem, 15vw, 6.2rem);
+    line-height: 0.82;
+    letter-spacing: -0.05em;
   }
 
+  .word-culture {
+    margin-bottom: 0.02em;
+  }
+
+  .word-is {
+    margin-bottom: 0.01em;
+  }
+
+  .word-practice {
+    font-size: clamp(3.1rem, 13.5vw, 5.6rem);
+  }
 }
 
   .event-bigtext {
@@ -560,7 +579,7 @@ transition:transform .35s ease;
   .event-bigtext span {
     font-size: 12vw;
   }
-  
+
   </style>
 </head>
 <body>
