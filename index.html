@@ -471,7 +471,73 @@ transition:transform .35s ease;
     width: 100%;
     justify-content: center;
   }
+/* gesamtes Layout: poster links / text rechts */
+.event-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: stretch;
+}
 
+/* macht den gesamten block klickbar */
+.event-hero-link {
+  display: block;
+}
+
+/* poster */
+.event-poster img {
+  height: 100%;
+  max-height: 90vh; /* nutzt Bildschirmhöhe */
+  width: auto;
+  object-fit: cover;
+}
+
+/* text container */
+.event-bigtext {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* statt space-between */
+  align-items: flex-start;
+  gap: 0;                  /* kein extra Abstand */
+  height: 100%;
+}
+
+/* einzelne wörter */
+.event-bigtext span {
+  font-weight: 700;
+  font-size: clamp(4rem, 10vw, 9rem); /* deutlich kleiner */
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+.word-culture {
+  margin-bottom: 0.17em;
+}
+
+.word-is {
+  margin-bottom: 0.04em;
+}
+
+.word-practice {
+  font-size: clamp(4.8rem, 13vw, 11rem);
+ letter-spacing: -0.06em;
+}
+
+@media (max-width: 768px) {
+  .event-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .event-bigtext {
+    gap: 0.1em;
+    align-items: flex-start;
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .event-bigtext span {
+    font-size: 12vw;
+  }
+}
   </style>
 </head>
 <body>
@@ -515,23 +581,24 @@ transition:transform .35s ease;
     <section id="projects" class="section">
       <div class="section-head">
         <div class="label">.events</div>
-        <h2 class="section-title">culture is practice.</h2>
       </div>
-<div class="projects">
+        <a href="https://ntry.at/ihatemyselfbecausevienna/performances/26667?l=en" target="_blank" class="event-hero-link">
 
-<a href="https://ntry.at/ihatemyselfbecausevienna/performances/26667?l=en" class="project-link" target="_blank">
+  <div class="event-hero">
 
-<article class="project">
+    <div class="event-poster">
+      <img src="images/poster_a3.png" alt="poster">
+    </div>
 
-<div class="project-media">
-<img src="images/poster_a3.png" alt="poster">
+    <div class="event-bigtext">
+  <span class="word-culture">culture</span>
+  <span class="word-is">is</span>
+  <span class="word-practice">practice.</span>
 </div>
 
-<div class="project-meta">
-<h3 class="project-title">live campaigns</h3>
-<p class="project-copy">i hate myself because live in vienna 
-// design: Fabian Lesslhumer, foto: Nick Limberger </p>
-</div>
+  </div>
+
+</a>
 
 </article>
 
